@@ -1,0 +1,82 @@
+# Rapport 
+```plantuml
+@startuml
+class Cabinet{
+- nom :String
+- adresse : Adresse
+- infirmiers : Infirmiers
+- patients : Patients 
+  }
+
+class Infirmiers {
+- id : String
+- nom : String
+- prenom : String
+- photo : Photo 
+  }
+
+class Patient {
+- nom : String
+- prenom :String
+- sexe : sexe
+- naissance :date
+- adresse : Adresse 
+  }
+
+
+class Adresse{
+- etage : Int
+- nom : String
+- rue : Int
+- codepostal : Codepostal
+- ville : String
+  }
+  
+class Codepostal {
+- <<Pattern>>
+}
+
+class Visite {
+- date : Date
+- intervenant : Idintervenant
+  }
+  
+class Idintervenant {
+- <<Pattern >>
+} 
+   
+class Acte {
+- id : idacte 
+- type : String
+- cle : [pattern]
+- coef : Double
+  }
+  
+class Idacte {
+- <<Pattern>>
+}    
+
+class Photo {
+- <<Pattern>>  
+}
+
+enum Sexe {
+- H
+- F
+- A
+}
+
+Cabinet *-- Infirmiers
+Cabinet *-- Patient 
+Cabinet *-- Adresse 
+Patient *-- Adresse 
+Patient *-- Visite 
+Visite *-- Infirmiers
+Visite *-- Acte 
+Patient *-- Sexe
+Infirmiers *-- Photo
+Visite *-- Idintervenant
+Adresse *-- Codepostal
+Acte *-- Idacte 
+
+@enduml```
